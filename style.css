@@ -1,0 +1,4562 @@
+@import url(
+    'https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap'
+);
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    background: #030305;
+
+    color: white;
+
+    font-family:
+        'DM Sans',
+        Arial,
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro {
+
+    width: 100%;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(117, 50, 190, 0.15),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(42, 18, 70, 0.20),
+            transparent 50%
+        ),
+
+        #030305;
+
+    transition:
+        opacity 1.4s ease,
+        transform 1.4s ease;
+
+}
+
+
+.intro.started {
+
+    opacity: 0;
+
+    transform: scale(1.04);
+
+    pointer-events: none;
+
+}
+
+
+.intro-noise {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.025;
+
+    pointer-events: none;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+}
+
+
+.intro-glow {
+
+    position: absolute;
+
+    width: 450px;
+
+    height: 450px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(153, 72, 255, 0.13);
+
+    filter:
+        blur(120px);
+
+    animation:
+        breathe 5s ease-in-out infinite;
+
+    pointer-events: none;
+
+}
+
+
+@keyframes breathe {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.85);
+
+        opacity: 0.4;
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.15);
+
+        opacity: 0.8;
+
+    }
+
+}
+
+
+.intro-content {
+
+    width: min(900px, 90%);
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    animation:
+        introEntrance 1.8s ease forwards;
+
+}
+
+
+@keyframes introEntrance {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.intro-overline {
+
+    margin-bottom: 28px;
+
+    color:
+        rgba(255,255,255,0.40);
+
+    font-size: 0.68rem;
+
+    letter-spacing: 5px;
+
+    font-weight: 500;
+
+}
+
+
+.intro h1 {
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3.8rem, 9vw, 7.8rem);
+
+    font-weight: 400;
+
+    line-height: 0.92;
+
+    letter-spacing: -3px;
+
+}
+
+
+.intro h1 span {
+
+    display: block;
+
+    margin-top: 13px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #d09cff 45%,
+            #ffffff 70%,
+            #ffffff 100%
+        );
+
+    background-size: 250% auto;
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        titleShine 7s linear infinite;
+
+}
+
+
+@keyframes titleShine {
+
+    to {
+
+        background-position:
+            250% center;
+
+    }
+
+}
+
+
+.sound-wave {
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    margin:
+        38px 0 20px;
+
+}
+
+
+.sound-wave span {
+
+    width: 2px;
+
+    height: 10px;
+
+    border-radius: 10px;
+
+    background:
+        #bd7aff;
+
+    box-shadow:
+        0 0 12px rgba(189,122,255,0.8);
+
+    animation:
+        equalizer 1.15s ease-in-out infinite;
+
+}
+
+
+.sound-wave span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+
+.sound-wave span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+
+.sound-wave span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+
+.sound-wave span:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+
+.sound-wave span:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+
+@keyframes equalizer {
+
+    0%,
+    100% {
+
+        height: 8px;
+
+        opacity: 0.45;
+
+    }
+
+    50% {
+
+        height: 30px;
+
+        opacity: 1;
+
+    }
+
+}
+
+
+.intro-title {
+
+    margin-bottom: 45px;
+
+    color:
+        rgba(255,255,255,0.60);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size: 1.25rem;
+
+    font-style: italic;
+
+}
+
+
+#startButton {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    position: relative;
+
+    z-index: 20;
+
+    padding:
+        17px 30px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.20);
+
+    border-radius: 100px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    color: white;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+#startButton:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(192,132,252,0.60);
+
+    background:
+        rgba(168,85,247,0.11);
+
+    box-shadow:
+        0 0 35px
+        rgba(168,85,247,0.20);
+
+}
+
+
+#startButton:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+.button-icon {
+
+    color:
+        #c084fc;
+
+    font-size: 0.7rem;
+
+}
+
+
+.intro-date {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    color:
+        rgba(255,255,255,0.27);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 4px;
+
+}
+
+
+.intro-date i {
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(192,132,252,0.65);
+
+}
+
+
+.scroll-hint {
+
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color:
+        rgba(255,255,255,0.22);
+
+    font-size: 0.55rem;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+.scroll-hint div {
+
+    width: 30px;
+
+    height: 1px;
+
+    background:
+        rgba(255,255,255,0.22);
+
+}
+
+
+/* =====================================================
+   HISTÓRIA
+===================================================== */
+
+.story {
+
+    position: relative;
+
+    background:
+        #030305;
+
+}
+
+
+.chapter {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        100px 25px;
+
+    overflow: hidden;
+
+}
+
+
+.chapter-content {
+
+    width:
+        min(760px, 92%);
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+}
+
+
+.chapter-bg-glow {
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(108,43,160,0.10);
+
+    filter:
+        blur(120px);
+
+}
+
+
+.chapter-heading {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 38px;
+
+}
+
+
+.chapter-number {
+
+    color:
+        #bd7aff;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 7px;
+
+}
+
+
+.chapter-name {
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size: 0.63rem;
+
+    letter-spacing: 5px;
+
+}
+
+
+.chapter-year {
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,0.25);
+
+    font-size: 0.68rem;
+
+    letter-spacing: 10px;
+
+}
+
+
+.chapter-title {
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.04;
+
+}
+
+
+.chapter-title em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.divider {
+
+    width: 42px;
+
+    height: 1px;
+
+    margin:
+        48px auto;
+
+    background:
+        rgba(192,132,252,0.55);
+
+}
+
+
+.opening-lines {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 17px;
+
+    margin-bottom: 48px;
+
+}
+
+
+.opening-lines p {
+
+    color:
+        rgba(255,255,255,0.68);
+
+    font-size: 1.15rem;
+
+    line-height: 1.8;
+
+}
+
+
+.opening-lines strong {
+
+    color: white;
+
+    font-weight: 400;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size: 1.5rem;
+
+}
+
+
+.chapter-text {
+
+    color:
+        rgba(255,255,255,0.42);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size: 1.15rem;
+
+    line-height: 2;
+
+    font-style: italic;
+
+}
+
+
+/* =====================================================
+   FOTOS
+===================================================== */
+
+.memory {
+
+    width: 100%;
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        90px 20px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(130,55,190,0.13),
+            transparent 48%
+        ),
+
+        #020204;
+
+}
+
+
+.memory-content {
+
+    width:
+        min(700px, 92%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 34px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.memory-image-box {
+
+    width: 480px;
+
+    height: 480px;
+
+    max-width: 82vw;
+
+    max-height: 52vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    box-shadow:
+
+        0 25px 80px
+        rgba(0,0,0,0.70),
+
+        0 0 55px
+        rgba(168,85,247,0.10);
+
+    overflow: hidden;
+
+}
+
+
+.memory-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    border-radius: 10px;
+
+    background:
+        #08080d;
+
+    filter:
+        brightness(0.90)
+        saturate(0.88);
+
+    transition:
+        transform 0.8s ease,
+        filter 0.8s ease;
+
+}
+
+
+.memory-image-box:hover .memory-image {
+
+    transform:
+        scale(1.02);
+
+    filter:
+        brightness(1)
+        saturate(1);
+
+}
+
+
+.memory-caption {
+
+    width:
+        min(650px, 92%);
+
+    text-align: center;
+
+}
+
+
+.memory-caption span {
+
+    display: block;
+
+    margin-bottom: 20px;
+
+    color:
+        rgba(255,255,255,0.36);
+
+    font-size: 0.60rem;
+
+    letter-spacing: 4px;
+
+}
+
+
+.memory-caption p {
+
+    color:
+        rgba(255,255,255,0.88);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.35rem, 3vw, 2rem);
+
+    line-height: 1.45;
+
+}
+
+
+/* =====================================================
+   CONTINUAÇÃO
+===================================================== */
+
+.continuation {
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(86,33,130,0.11),
+            transparent 45%
+        ),
+
+        #030305;
+
+}
+
+
+.small-label {
+
+    display: block;
+
+    margin-bottom: 32px;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 5px;
+
+}
+
+
+.continuation h2 {
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3.2rem, 9vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    margin-bottom: 52px;
+
+}
+
+
+.continuation h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.long-text {
+
+    max-width: 560px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-size: 1.15rem;
+
+    line-height: 2.1;
+
+}
+
+
+/* =====================================================
+   TEXT SCREEN
+===================================================== */
+
+.text-screen {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #030305,
+            #07030b,
+            #030305
+        );
+
+}
+
+
+.text-screen-content {
+
+    width:
+        min(700px, 90%);
+
+    text-align: center;
+
+}
+
+
+.text-screen h2 {
+
+    margin-bottom: 55px;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
+    font-weight: 400;
+
+}
+
+
+.text-screen-content > p {
+
+    color:
+        rgba(255,255,255,0.60);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.3rem, 3vw, 1.8rem);
+
+    line-height: 1.7;
+
+}
+
+
+.pulse-line {
+
+    width: 80px;
+
+    height: 1px;
+
+    margin:
+        65px auto 0;
+
+    background:
+        #c084fc;
+
+    box-shadow:
+        0 0 20px
+        rgba(192,132,252,0.6);
+
+}
+
+
+/* =====================================================
+   VÍDEOS
+===================================================== */
+
+.video-section {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        90px 20px;
+
+    background:
+        #020204;
+
+}
+
+
+.video-content {
+
+    width:
+        min(800px, 94%);
+
+    text-align: center;
+
+}
+
+
+.video-label {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.video-label span:first-child {
+
+    color:
+        #c084fc;
+
+    font-size: 0.70rem;
+
+    letter-spacing: 5px;
+
+}
+
+
+.video-label span:last-child {
+
+    color:
+        rgba(255,255,255,0.32);
+
+    font-size: 0.55rem;
+
+    letter-spacing: 4px;
+
+}
+
+
+.video-frame {
+
+    width: 100%;
+
+    max-width: 760px;
+
+    height: 470px;
+
+    margin: auto;
+
+    padding: 10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.65),
+
+        0 0 50px
+        rgba(168,85,247,0.08);
+
+}
+
+
+.story-video {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    background:
+        #000;
+
+}
+
+
+.video-caption {
+
+    width:
+        min(650px, 92%);
+
+    margin:
+        30px auto 0;
+
+    color:
+        rgba(255,255,255,0.60);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.25rem;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   LOVE
+===================================================== */
+
+.love-section {
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(116,43,166,0.12),
+            transparent 45%
+        ),
+
+        #030305;
+
+}
+
+
+.love-section h2 {
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    margin-bottom: 55px;
+
+}
+
+
+.love-section h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+/* =====================================================
+   DREAM
+===================================================== */
+
+.dream-section {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        100px 25px;
+
+    text-align: center;
+
+}
+
+
+.dream-content {
+
+    width:
+        min(760px, 90%);
+
+}
+
+
+.dream-content h2 {
+
+    margin-bottom: 50px;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+}
+
+
+.dream-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.dream-content > p {
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.3rem;
+
+    line-height: 2;
+
+}
+
+
+.family-lines {
+
+    margin-top: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    color:
+        rgba(255,255,255,0.50);
+
+    letter-spacing: 5px;
+
+    font-size: 0.7rem;
+
+}
+
+
+.family-lines i {
+
+    color:
+        #c084fc;
+
+    font-style: normal;
+
+    font-size: 1.3rem;
+
+}
+
+
+/* =====================================================
+   CHEGADA
+===================================================== */
+
+.arrival-section {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding:
+        100px 25px;
+
+    text-align: center;
+
+    background:
+        #020204;
+
+}
+
+
+.arrival-glow {
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(168,85,247,0.15);
+
+    filter:
+        blur(130px);
+
+}
+
+
+.arrival-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(850px, 92%);
+
+}
+
+
+.arrival-small {
+
+    display: block;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 6px;
+
+}
+
+
+.arrival-date {
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-size: 0.75rem;
+
+    letter-spacing: 8px;
+
+}
+
+
+.arrival-date strong {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: white;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size: 2rem;
+
+    font-weight: 400;
+
+    letter-spacing: 4px;
+
+}
+
+
+.arrival-content h2 {
+
+    margin:
+        45px 0;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3.5rem, 9vw, 7rem);
+
+    font-weight: 400;
+
+    line-height: 0.98;
+
+}
+
+
+.arrival-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.arrival-content > p {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,0.60);
+
+    font-size: 1.15rem;
+
+    line-height: 2;
+
+}
+
+
+/* =====================================================
+   PRIMEIRO BEIJO
+===================================================== */
+
+.kiss-section {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        100px 25px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(132,52,180,0.14),
+            transparent 42%
+        ),
+
+        #030305;
+
+    text-align: center;
+
+}
+
+
+.kiss-content {
+
+    width:
+        min(850px, 92%);
+
+}
+
+
+.kiss-intro {
+
+    margin-bottom: 10px;
+
+    color:
+        rgba(255,255,255,0.75);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2rem, 5vw, 3.5rem);
+
+}
+
+
+.big-thought {
+
+    margin-top: 70px;
+
+}
+
+
+.big-thought span {
+
+    display: block;
+
+    margin-bottom: 30px;
+
+    color:
+        rgba(255,255,255,0.35);
+
+    font-size: 0.65rem;
+
+    letter-spacing: 3px;
+
+}
+
+
+.big-thought strong {
+
+    display: block;
+
+    color:
+        #d6a8ff;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 35px
+        rgba(192,132,252,0.22);
+
+}
+
+
+/* =====================================================
+   REFLEXÃO
+===================================================== */
+
+.memory-reflection {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        100px 25px;
+
+    text-align: center;
+
+}
+
+
+.reflection-content {
+
+    width:
+        min(800px, 92%);
+
+}
+
+
+.reflection-content h2 {
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+}
+
+
+.reflection-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.reflection-text {
+
+    margin-top: 65px;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.35rem;
+
+    line-height: 2;
+
+}
+
+
+/* =====================================================
+   MEU NAMORADO
+===================================================== */
+
+.boyfriend-section {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        100px 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #030305,
+            #08040d,
+            #030305
+        );
+
+}
+
+
+.boyfriend-content {
+
+    width:
+        min(850px, 92%);
+
+}
+
+
+.quote {
+
+    margin:
+        60px auto;
+
+    max-width: 750px;
+
+    color:
+        rgba(255,255,255,0.90);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2.2rem, 5vw, 4rem);
+
+    line-height: 1.2;
+
+}
+
+
+.quote > span {
+
+    display: block;
+
+    margin-bottom: 20px;
+
+    color:
+        #c084fc;
+
+    font-size: 4rem;
+
+    line-height: 0.5;
+
+}
+
+
+.quote-impact {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.quote-impact p {
+
+    margin-bottom: 15px;
+
+    color:
+        #d6a8ff;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2rem, 5vw, 3.5rem);
+
+}
+
+
+.quote-impact span {
+
+    color:
+        rgba(255,255,255,0.32);
+
+    font-size: 0.65rem;
+
+    letter-spacing: 5px;
+
+}
+
+
+.boyfriend-text {
+
+    max-width: 600px;
+
+    margin:
+        60px auto 0;
+
+    color:
+        rgba(255,255,255,0.52);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size: 1.25rem;
+
+    line-height: 1.8;
+
+}
+
+
+/* =====================================================
+   PRÓXIMO CAPÍTULO
+===================================================== */
+
+.next-chapter {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        100px 25px;
+
+    text-align: center;
+
+}
+
+
+.next-chapter > div {
+
+    width:
+        min(850px, 92%);
+
+}
+
+
+.next-chapter span {
+
+    color:
+        rgba(255,255,255,0.28);
+
+    font-size: 0.58rem;
+
+    letter-spacing: 5px;
+
+}
+
+
+.next-chapter h2 {
+
+    margin:
+        45px 0;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2.8rem, 7vw, 5.5rem);
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+}
+
+
+.next-chapter p {
+
+    color:
+        rgba(255,255,255,0.45);
+
+    font-size:
+        1.1rem;
+
+}
+
+
+.next-arrow {
+
+    margin-top: 70px;
+
+    color:
+        #c084fc;
+
+    font-size: 1.5rem;
+
+    animation:
+        arrowFloat 2s ease-in-out infinite;
+
+}
+
+
+@keyframes arrowFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(8px);
+
+    }
+
+}
+
+
+/* =====================================================
+   CONTROLE DA MÚSICA
+===================================================== */
+
+.music-control {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        10px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 50px;
+
+    background:
+        rgba(8,8,12,0.70);
+
+    backdrop-filter:
+        blur(15px);
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-size: 0.55rem;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        color 0.3s ease;
+
+}
+
+
+.music-control.visible {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.music-control:hover {
+
+    color: white;
+
+}
+
+
+.music-icon {
+
+    color:
+        #c084fc;
+
+    font-size: 1rem;
+
+}
+
+
+.music-control.playing .music-icon {
+
+    animation:
+        musicPulse 1s ease-in-out infinite;
+
+}
+
+
+@keyframes musicPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+        text-shadow:
+            0 0 5px #c084fc;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.2);
+
+        text-shadow:
+            0 0 15px #c084fc;
+
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 700px) {
+
+
+    .intro-overline {
+
+        width: 90%;
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+        font-size: 0.52rem;
+
+        line-height: 1.8;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .intro h1 {
+
+        font-size:
+            clamp(3.1rem, 15vw, 5rem);
+
+        letter-spacing:
+            -2px;
+
+    }
+
+
+    .intro-title {
+
+        font-size:
+            1.05rem;
+
+    }
+
+
+    .scroll-hint {
+
+        display: none;
+
+    }
+
+
+    .intro-date {
+
+        bottom: 24px;
+
+    }
+
+
+    .chapter {
+
+        padding:
+            90px 20px;
+
+    }
+
+
+    .chapter-title {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+    }
+
+
+    .opening-lines p {
+
+        font-size:
+            1.02rem;
+
+    }
+
+
+    .opening-lines strong {
+
+        font-size:
+            1.25rem;
+
+    }
+
+
+    .chapter-text {
+
+        font-size:
+            1.05rem;
+
+    }
+
+
+    .memory {
+
+        padding:
+            75px 18px;
+
+    }
+
+
+    .memory-content {
+
+        width: 100%;
+
+        gap: 28px;
+
+    }
+
+
+    .memory-image-box {
+
+        width: 88vw;
+
+        height: 88vw;
+
+        max-width: 390px;
+
+        max-height: 390px;
+
+        padding: 10px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .memory-image {
+
+        border-radius: 8px;
+
+    }
+
+
+    .memory-caption {
+
+        width: 90%;
+
+    }
+
+
+    .memory-caption span {
+
+        font-size:
+            0.52rem;
+
+        letter-spacing:
+            3px;
+
+    }
+
+
+    .memory-caption p {
+
+        font-size:
+            1.28rem;
+
+        line-height:
+            1.5;
+
+    }
+
+
+    .long-text {
+
+        font-size:
+            1.05rem;
+
+    }
+
+
+    .text-screen h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.2rem);
+
+    }
+
+
+    .text-screen-content > p {
+
+        font-size:
+            1.18rem;
+
+    }
+
+
+    .video-frame {
+
+        height:
+            62vh;
+
+        min-height:
+            330px;
+
+        padding: 7px;
+
+        border-radius: 15px;
+
+    }
+
+
+    .video-caption {
+
+        font-size:
+            1.08rem;
+
+    }
+
+
+    .love-section h2 {
+
+        font-size:
+            clamp(2.7rem, 13vw, 4.5rem);
+
+    }
+
+
+    .dream-content h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+    }
+
+
+    .family-lines {
+
+        gap: 15px;
+
+        font-size:
+            0.58rem;
+
+    }
+
+
+    .arrival-content h2 {
+
+        font-size:
+            clamp(3rem, 14vw, 5rem);
+
+    }
+
+
+    .arrival-content > p {
+
+        font-size:
+            1.02rem;
+
+    }
+
+
+    .big-thought strong {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+    }
+
+
+    .reflection-content h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+    }
+
+
+    .reflection-text {
+
+        font-size:
+            1.12rem;
+
+    }
+
+
+    .quote {
+
+        font-size:
+            clamp(2rem, 10vw, 3rem);
+
+    }
+
+
+    .boyfriend-text {
+
+        font-size:
+            1.08rem;
+
+    }
+
+
+    .next-chapter h2 {
+
+        font-size:
+            clamp(2.7rem, 12vw, 4.3rem);
+
+    }
+
+
+    .music-control {
+
+        right: 15px;
+
+        bottom: 15px;
+
+    }
+
+}
+/* =====================================================
+   AJUSTE FINAL — MANTER O PADRÃO CENTRALIZADO
+===================================================== */
+
+.final-section {
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(116,43,166,0.12),
+            transparent 45%
+        ),
+
+        #030305;
+
+    overflow: hidden;
+}
+
+
+.final-content {
+    width: min(850px, 92%);
+
+    margin: 0 auto;
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+}
+
+
+.final-small {
+    display: block;
+
+    margin-bottom: 38px;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 6px;
+
+    text-align: center;
+}
+
+
+.final-content h2 {
+    margin: 0 0 50px;
+
+    color: white;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    text-align: center;
+}
+
+
+.final-content h2 em {
+    color: #c084fc;
+
+    font-weight: 400;
+
+    font-style: italic;
+}
+
+
+.final-content > p {
+    width: min(620px, 100%);
+
+    margin: 0 auto;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.25rem;
+
+    line-height: 2;
+
+    text-align: center;
+}
+
+
+.final-divider {
+    width: 42px;
+
+    height: 1px;
+
+    margin: 50px auto;
+
+    background:
+        rgba(192,132,252,0.55);
+}
+
+
+.final-highlight {
+    display: block;
+
+    margin-top: 45px;
+
+    color:
+        #d6a8ff;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2rem, 5vw, 3.5rem);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 35px
+        rgba(192,132,252,0.20);
+}
+
+
+.final-signature {
+    display: block;
+
+    margin-top: 55px;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 5px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   FINAL — CELULAR
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .final-section {
+        min-height: 100svh;
+
+        padding:
+            90px 20px;
+    }
+
+
+    .final-content {
+        width: 92%;
+
+        margin: 0 auto;
+
+        text-align: center;
+    }
+
+
+    .final-small {
+        margin-bottom: 32px;
+
+        font-size: 0.52rem;
+
+        letter-spacing: 4px;
+    }
+
+
+    .final-content h2 {
+        margin-bottom: 42px;
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+        line-height: 1.05;
+
+        text-align: center;
+    }
+
+
+    .final-content > p {
+        width: 100%;
+
+        font-size: 1.08rem;
+
+        line-height: 1.9;
+
+        text-align: center;
+    }
+
+
+    .final-divider {
+        margin:
+            42px auto;
+    }
+
+
+    .final-highlight {
+        margin-top: 38px;
+
+        font-size:
+            clamp(2rem, 10vw, 3rem);
+
+        text-align: center;
+    }
+
+
+    .final-signature {
+        margin-top: 45px;
+
+        font-size: 0.52rem;
+
+        letter-spacing: 4px;
+
+        text-align: center;
+    }
+
+}
+/* =====================================================
+   CAR 1 — FINAL
+===================================================== */
+
+.cartoon-final {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(130,55,190,0.14),
+            transparent 45%
+        ),
+
+        #030305;
+
+}
+
+
+.final-glow {
+
+    position: absolute;
+
+    width: 550px;
+
+    height: 550px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(168,85,247,0.13);
+
+    filter:
+        blur(140px);
+
+    pointer-events: none;
+
+}
+
+
+.cartoon-content {
+
+    width:
+        min(800px, 92%);
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.final-content {
+
+    width:
+        min(800px, 92%);
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.final-small {
+
+    display: block;
+
+    margin-bottom: 38px;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 6px;
+
+    text-align: center;
+
+}
+
+
+.final-image-box {
+
+    width: 480px;
+
+    height: 480px;
+
+    max-width: 82vw;
+
+    max-height: 55vh;
+
+    padding: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    box-shadow:
+
+        0 25px 80px
+        rgba(0,0,0,0.70),
+
+        0 0 60px
+        rgba(168,85,247,0.12);
+
+}
+
+
+.final-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    border-radius: 10px;
+
+    background:
+        #08080d;
+
+    filter:
+        brightness(0.92)
+        saturate(0.90);
+
+    transition:
+        transform 0.8s ease,
+        filter 0.8s ease;
+
+}
+
+
+.final-image-box:hover .final-image {
+
+    transform:
+        scale(1.02);
+
+    filter:
+        brightness(1)
+        saturate(1);
+
+}
+
+
+.final-text {
+
+    width:
+        min(650px, 92%);
+
+    margin-top: 38px;
+
+    text-align: center;
+
+}
+
+
+.final-text p {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,0.68);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.25rem, 3vw, 1.7rem);
+
+    line-height: 1.65;
+
+}
+
+
+.final-text p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+/* =====================================================
+   ÚLTIMO DROP
+===================================================== */
+
+.ending-section {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #030305,
+            #07030b,
+            #030305
+        );
+
+}
+
+
+.ending-content {
+
+    width:
+        min(760px, 92%);
+
+    margin: 0 auto;
+
+    text-align: center;
+
+}
+
+
+.ending-content .small-label {
+
+    display: block;
+
+    margin-bottom: 38px;
+
+    text-align: center;
+
+}
+
+
+.ending-content h2 {
+
+    margin-bottom: 52px;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.02;
+
+    text-align: center;
+
+}
+
+
+.ending-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.ending-content > p {
+
+    max-width: 620px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(255,255,255,0.58);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.25rem;
+
+    line-height: 2;
+
+    text-align: center;
+
+}
+
+
+.beats {
+
+    margin-top: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 35px;
+
+}
+
+
+.beats span {
+
+    color:
+        #c084fc;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1rem;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 18px
+        rgba(192,132,252,0.55);
+
+    animation:
+        finalBeat 1.8s ease-in-out infinite;
+
+}
+
+
+.beats span:nth-child(2) {
+
+    animation-delay:
+        0.25s;
+
+}
+
+
+.beats span:nth-child(3) {
+
+    animation-delay:
+        0.5s;
+
+}
+
+
+@keyframes finalBeat {
+
+    0%,
+    100% {
+
+        opacity: 0.35;
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+/* =====================================================
+   DECLARAÇÃO FINAL
+===================================================== */
+
+.final-message {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 110px 25px;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(132,52,180,0.14),
+            transparent 45%
+        ),
+
+        #030305;
+
+}
+
+
+.final-message-content {
+
+    width:
+        min(800px, 92%);
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.final-beat {
+
+    color:
+        #c084fc;
+
+    font-size: 0.70rem;
+
+    letter-spacing: 6px;
+
+    text-shadow:
+        0 0 18px
+        rgba(192,132,252,0.50);
+
+    margin: 25px 0;
+
+}
+
+
+.final-message h2 {
+
+    margin: 15px 0;
+
+    color: white;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3.2rem, 9vw, 6.5rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    text-align: center;
+
+}
+
+
+.final-message p {
+
+    width:
+        min(650px, 100%);
+
+    margin: 55px auto 0;
+
+    color:
+        rgba(255,255,255,0.52);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.15rem, 3vw, 1.45rem);
+
+    line-height: 2;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   ETERNIDADE
+===================================================== */
+
+.eternity-section {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            rgba(168,85,247,0.16),
+            transparent 48%
+        ),
+
+        #020204;
+
+}
+
+
+.eternity-content {
+
+    width:
+        min(850px, 92%);
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.eternity-content > span {
+
+    display: block;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 6px;
+
+    text-align: center;
+
+}
+
+
+.eternity-content h2 {
+
+    margin: 0;
+
+    color: white;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3.2rem, 8vw, 6.5rem);
+
+    font-weight: 400;
+
+    line-height: 1.02;
+
+    text-align: center;
+
+}
+
+
+.eternity-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.eternity-line {
+
+    width: 60px;
+
+    height: 1px;
+
+    margin: 55px auto;
+
+    background:
+        rgba(192,132,252,0.65);
+
+    box-shadow:
+        0 0 20px
+        rgba(192,132,252,0.45);
+
+}
+
+
+.eternity-content > p {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 0.70rem;
+
+    letter-spacing: 6px;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   CARTOON — PADRÃO DAS IMAGENS FINAIS
+===================================================== */
+
+.cartoon-section {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 90px 20px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+        #030305;
+
+}
+
+
+.cartoon-content {
+
+    width:
+        min(700px, 92%);
+
+}
+
+
+.cartoon-image-box {
+
+    width: 480px;
+
+    height: 480px;
+
+    max-width: 82vw;
+
+    max-height: 55vh;
+
+    padding: 14px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.70),
+
+        0 0 55px
+        rgba(168,85,247,0.10);
+
+    overflow: hidden;
+
+}
+
+
+.cartoon-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    background:
+        #08080d;
+
+}
+
+
+.cartoon-caption {
+
+    width:
+        min(650px, 92%);
+
+    margin:
+        30px auto 0;
+
+    text-align: center;
+
+}
+
+
+.cartoon-caption span {
+
+    display: block;
+
+    margin-bottom: 20px;
+
+    color:
+        rgba(255,255,255,0.36);
+
+    font-size: 0.60rem;
+
+    letter-spacing: 4px;
+
+}
+
+
+.cartoon-caption p {
+
+    color:
+        rgba(255,255,255,0.88);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.35rem, 3vw, 2rem);
+
+    line-height: 1.45;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   CELULAR — FINAL
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .cartoon-final {
+
+        min-height: 100svh;
+
+        padding:
+            75px 18px;
+
+    }
+
+
+    .final-content {
+
+        width: 100%;
+
+        text-align: center;
+
+    }
+
+
+    .final-small {
+
+        margin-bottom: 28px;
+
+        font-size: 0.52rem;
+
+        letter-spacing: 3px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .final-image-box {
+
+        width: 88vw;
+
+        height: 88vw;
+
+        max-width: 390px;
+
+        max-height: 390px;
+
+        padding: 10px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .final-image {
+
+        border-radius: 8px;
+
+    }
+
+
+    .final-text {
+
+        width: 90%;
+
+        margin-top: 28px;
+
+    }
+
+
+    .final-text p {
+
+        font-size: 1.15rem;
+
+        line-height: 1.6;
+
+    }
+
+
+    .ending-section {
+
+        padding:
+            90px 20px;
+
+    }
+
+
+    .ending-content {
+
+        width: 92%;
+
+    }
+
+
+    .ending-content h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+        line-height: 1.05;
+
+    }
+
+
+    .ending-content > p {
+
+        font-size: 1.08rem;
+
+        line-height: 1.9;
+
+    }
+
+
+    .beats {
+
+        gap: 20px;
+
+        margin-top: 50px;
+
+    }
+
+
+    .beats span {
+
+        font-size: 0.78rem;
+
+    }
+
+
+    .final-message {
+
+        padding:
+            90px 20px;
+
+    }
+
+
+    .final-message-content {
+
+        width: 92%;
+
+    }
+
+
+    .final-message h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+        line-height: 1.05;
+
+    }
+
+
+    .final-message p {
+
+        width: 100%;
+
+        margin-top: 45px;
+
+        font-size: 1.08rem;
+
+        line-height: 1.9;
+
+    }
+
+
+    .final-beat {
+
+        margin: 20px 0;
+
+        font-size: 0.60rem;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .eternity-section {
+
+        padding:
+            90px 20px;
+
+    }
+
+
+    .eternity-content {
+
+        width: 92%;
+
+    }
+
+
+    .eternity-content > span {
+
+        margin-bottom: 28px;
+
+        font-size: 0.52rem;
+
+        letter-spacing: 4px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .eternity-content h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+        line-height: 1.05;
+
+    }
+
+
+    .eternity-line {
+
+        margin:
+            42px auto;
+
+    }
+
+
+    .eternity-content > p {
+
+        font-size: 0.58rem;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .cartoon-section {
+
+        padding:
+            75px 18px;
+
+    }
+
+
+    .cartoon-image-box {
+
+        width: 88vw;
+
+        height: 88vw;
+
+        max-width: 390px;
+
+        max-height: 390px;
+
+        padding: 10px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .cartoon-caption {
+
+        width: 90%;
+
+    }
+
+
+    .cartoon-caption span {
+
+        font-size: 0.52rem;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .cartoon-caption p {
+
+        font-size: 1.28rem;
+
+        line-height: 1.5;
+
+    }
+
+}
+/* =====================================================
+   ESCOLHA
+===================================================== */
+
+.choice-section {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(116, 43, 166, 0.12),
+            transparent 45%
+        ),
+
+        #030305;
+
+}
+
+
+.choice-content {
+
+    width: min(800px, 92%);
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.choice-content h2 {
+
+    margin:
+        45px 0 50px;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.02;
+
+}
+
+
+.choice-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.choice-content > p {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.25rem;
+
+    line-height: 2;
+
+}
+
+
+.choice-line {
+
+    width: 70px;
+
+    height: 1px;
+
+    margin:
+        65px auto 0;
+
+    background:
+        #c084fc;
+
+    box-shadow:
+        0 0 20px
+        rgba(192,132,252,0.6);
+
+}
+
+
+/* =====================================================
+   ENFRENTAR O MUNDO
+===================================================== */
+
+.world-section {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #030305,
+            #07030b,
+            #030305
+        );
+
+}
+
+
+.world-content {
+
+    width: min(800px, 92%);
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.world-content h2 {
+
+    margin:
+        45px 0 50px;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.02;
+
+}
+
+
+.world-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.world-content > p {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.25rem;
+
+    line-height: 2;
+
+}
+
+
+.world-question {
+
+    margin-top: 65px;
+
+    color:
+        #d6a8ff;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.5rem, 4vw, 2.2rem);
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 25px
+        rgba(192,132,252,0.18);
+
+}
+
+
+/* =====================================================
+   FUTURO
+===================================================== */
+
+.future-section {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(130,55,190,0.13),
+            transparent 45%
+        ),
+
+        #030305;
+
+}
+
+
+.future-content {
+
+    width: min(800px, 92%);
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.future-content h2 {
+
+    margin:
+        45px 0 50px;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.02;
+
+}
+
+
+.future-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.future-content > p {
+
+    max-width: 620px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.25rem;
+
+    line-height: 2;
+
+}
+
+
+.future-word {
+
+    margin-top: 65px;
+
+    color:
+        #d6a8ff;
+
+    font-size:
+        0.70rem;
+
+    letter-spacing: 8px;
+
+    text-shadow:
+        0 0 20px
+        rgba(192,132,252,0.25);
+
+}
+
+
+/* =====================================================
+   AJUSTES MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+
+    .choice-section,
+    .world-section,
+    .future-section {
+
+        min-height: 100svh;
+
+        padding:
+            90px 20px;
+
+    }
+
+
+    .choice-content,
+    .world-content,
+    .future-content {
+
+        width: 92%;
+
+    }
+
+
+    .choice-content h2,
+    .world-content h2,
+    .future-content h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+        line-height: 1.05;
+
+    }
+
+
+    .choice-content > p,
+    .world-content > p,
+    .future-content > p {
+
+        font-size:
+            1.08rem;
+
+        line-height:
+            1.9;
+
+    }
+
+
+    .world-question {
+
+        margin-top: 50px;
+
+        font-size:
+            1.35rem;
+
+    }
+
+
+    .future-word {
+
+        margin-top: 50px;
+
+        font-size:
+            0.58rem;
+
+        letter-spacing:
+            5px;
+
+    }
+
+}
+/* =====================================================
+   JANTAR
+===================================================== */
+
+.dinner-section {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(108, 43, 160, 0.10),
+            transparent 45%
+        ),
+
+        #030305;
+
+}
+
+
+.dinner-content {
+
+    width: min(800px, 92%);
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.dinner-lines {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    margin:
+        55px auto 50px;
+
+}
+
+
+.dinner-lines p {
+
+    color:
+        rgba(255,255,255,0.78);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.6rem, 4vw, 2.4rem);
+
+    line-height: 1.4;
+
+}
+
+
+.dinner-highlight {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,0.52);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.25rem;
+
+    font-style: italic;
+
+    line-height: 1.9;
+
+}
+
+
+/* =====================================================
+   PROMESSA
+===================================================== */
+
+.promise-section {
+
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 25px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(132, 52, 180, 0.14),
+            transparent 45%
+        ),
+
+        #030305;
+
+}
+
+
+.promise-content {
+
+    width: min(850px, 92%);
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.promise-content h2 {
+
+    margin:
+        45px 0 50px;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.02;
+
+}
+
+
+.promise-content h2 em {
+
+    color:
+        #c084fc;
+
+    font-weight: 400;
+
+}
+
+
+.promise-answer {
+
+    margin-bottom: 25px;
+
+    color:
+        rgba(255,255,255,0.52);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        1.35rem;
+
+    line-height: 1.8;
+
+}
+
+
+.promise-content > strong {
+
+    display: block;
+
+    color:
+        #d6a8ff;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2.2rem, 5vw, 3.8rem);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    text-shadow:
+        0 0 35px
+        rgba(192,132,252,0.22);
+
+}
+
+
+/* =====================================================
+   JANTAR + PROMESSA — MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+
+    .dinner-section,
+    .promise-section {
+
+        min-height: 100svh;
+
+        padding:
+            90px 20px;
+
+    }
+
+
+    .dinner-content,
+    .promise-content {
+
+        width: 92%;
+
+    }
+
+
+    .dinner-lines {
+
+        margin:
+            45px auto 40px;
+
+        gap: 14px;
+
+    }
+
+
+    .dinner-lines p {
+
+        font-size:
+            1.45rem;
+
+    }
+
+
+    .dinner-highlight {
+
+        font-size:
+            1.08rem;
+
+        line-height:
+            1.8;
+
+    }
+
+
+    .promise-content h2 {
+
+        font-size:
+            clamp(2.8rem, 13vw, 4.5rem);
+
+        line-height:
+            1.05;
+
+    }
+
+
+    .promise-answer {
+
+        font-size:
+            1.15rem;
+
+    }
+
+
+    .promise-content > strong {
+
+        font-size:
+            clamp(2rem, 10vw, 3rem);
+
+    }
+
+}
+.text-screen h2 {
+    color: #c084fc;
+}
